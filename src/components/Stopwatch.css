@@ -1,0 +1,43 @@
+.stopwatch-container {
+	border: 1px solid red;
+	padding: 20px 30px;
+
+	font-size: 90px;
+	flex-basis: 65%; /* Set the width of the container*/
+	/* max-width: 65%; */
+	/* margin-inline: auto; */
+	/* flex-grow: 0;
+    flex-shrink: 0; */
+	/* flex-basis: 0; */
+
+	color: whitesmoke;
+
+	text-align: center;
+
+	.stopwatch {
+		background-color: #233142;
+		border-radius: 15px;
+		padding: 10px;
+	}
+
+	.buttons > button {
+		font-size: 30px;
+		margin-right: 25px;
+		padding: 10px 15px;
+		border-radius: 20px;
+		font-weight: bold;
+		color: inherit;
+	}
+
+	.start {
+		background-color: #04aa6d;
+	}
+
+	.stop {
+		background-color: #f44336;
+	}
+
+	.reset {
+		background-color: #008cba;
+	}
+}
