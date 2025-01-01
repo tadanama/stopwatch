@@ -1,4 +1,5 @@
 import React from "react";
+import "./Stopwatch.css"
 
 function Stopwatch() {
 	return (
@@ -7,9 +8,9 @@ function Stopwatch() {
 				<div className="stopwatch">
 					<span>00 : 00 : 00</span>
 					<div className="buttons">
-						<button>Start timer</button>
-						<button>Stop timer</button>
-						<button>Reset</button>
+						<button className="start">Start timer</button>
+						<button className="stop">Stop timer</button>
+						<button className="reset">Reset</button>
 					</div>
 				</div>
 			</div>
