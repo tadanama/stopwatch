@@ -33,6 +33,15 @@ function Stopwatch() {
 		setIsRunning(false);
 	}
 
+	function formatTime() {
+		const minutes = Math.floor(time / 60000); // Convert time from milliseconds to minutes
+		const seconds = Math.floor((time % 60000) / 1000); // Convert the remaining time to seconds
+		const milliseconds = time % 1000; // Get the remaining time after converting
+
+		// Return time in the format of <minutes>:<seconds>:<milliseconds>
+		return `${minutes} : ${seconds} : ${milliseconds}`;
+	}
+
 	return (
 		<>
 			<div className="stopwatch-container">
