@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Stopwatch.css";
 
 function Stopwatch() {
@@ -21,6 +21,11 @@ function Stopwatch() {
 			// Stop the interval when is Running is false
 			clearInterval(interval);
 		}
+
+		// Remove the interval when Stopwatch unmounts or isRunning state has changed
+		return () => {
+			clearInterval(interval);
+		};
 	}, [isRunning]);
 
 	// Start the timer
@@ -33,26 +38,43 @@ function Stopwatch() {
 		setIsRunning(false);
 	}
 
+	// Format the time state
 	function formatTime() {
-		const minutes = Math.floor(time / 60000); // Convert time from milliseconds to minutes
-		const seconds = Math.floor((time % 60000) / 1000); // Convert the remaining time to seconds
-		const milliseconds = time % 1000; // Get the remaining time after converting
+		const minutes = String(Math.floor(time / 60000)); // Convert time from milliseconds to minutes
+		const seconds = String(Math.floor((time % 60000) / 1000)); // Convert the remaining time to seconds
+		const milliseconds = String((time % 1000) / 10); // Get the remaining time after converting
 
 		// Return time in the format of <minutes>:<seconds>:<milliseconds>
-		return `${minutes} : ${seconds} : ${milliseconds}`;
+		return `${prefixZero(minutes)} : ${prefixZero(seconds)} : ${prefixZero(
+			milliseconds
+		)}`;
+	}
+
+	// Padd string with 0 until it reaches the length 2
+	function prefixZero(value) {
+		return value.padStart(2, "0");
 	}
 
 	return (
 		<>
 			<div className="stopwatch-container">
 				<div className="stopwatch">
-					<span>00 : 00 : 00</span>
+					<span>{formatTime()}</span>
 					<div className="buttons">
 						<button className="start" onClick={handleStart}>
 							Start timer
 						</button>
-						<button className="stop">Stop timer</button>
-						<button className="reset">Reset</button>
+						<button className="stop" onClick={handleStop}>
+							Stop timer
+						</button>
+						<button
+							className="reset"
+							onClick={() => {
+								setTime(0);
+							}}
+						>
+							Reset
+						</button>
 					</div>
 				</div>
 			</div>
