@@ -23,8 +23,14 @@ function Stopwatch() {
 		}
 	}, [isRunning]);
 
+	// Start the timer
 	function handleStart() {
 		setIsRunning(true);
+	}
+
+	// Stop the timer
+	function handleStop() {
+		setIsRunning(false);
 	}
 
 	return (
