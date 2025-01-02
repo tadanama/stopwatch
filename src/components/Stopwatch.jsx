@@ -23,13 +23,19 @@ function Stopwatch() {
 		}
 	}, [isRunning]);
 
+	function handleStart() {
+		setIsRunning(true);
+	}
+
 	return (
 		<>
 			<div className="stopwatch-container">
 				<div className="stopwatch">
 					<span>00 : 00 : 00</span>
 					<div className="buttons">
-						<button className="start">Start timer</button>
+						<button className="start" onClick={handleStart}>
+							Start timer
+						</button>
 						<button className="stop">Stop timer</button>
 						<button className="reset">Reset</button>
 					</div>
