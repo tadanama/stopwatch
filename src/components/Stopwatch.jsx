@@ -1,7 +1,11 @@
-import React from "react";
-import "./Stopwatch.css"
+import React, { useState } from "react";
+import "./Stopwatch.css";
 
 function Stopwatch() {
+	// States
+	const [time, setTime] = useState(0); // Track the time
+	const [isRunning, setIsRunning] = useState(false); // Determine to start the interval or clear
+
 	return (
 		<>
 			<div className="stopwatch-container">
